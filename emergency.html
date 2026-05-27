@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Emergency News Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Font Awesome CDN for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #e0f2f1;
+    color: #004d40;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    text-align: center;
+    overflow-x: hidden;
+  }
+  nav {
+    background: #004d40;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    gap: 2rem;
+  }
+  nav a {
+    color:#b2dfdb;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  nav a:hover { color:#ff7043; }
+  header {
+    background: url('https://images.unsplash.com/photo-1603738902278-cf5d776e8ad8?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+    color: white;
+    position: relative;
+    padding: 3rem 1rem;
+  }
+  header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 77, 64, 0.6);
+  }
+  header h1 {
+    position: relative;
+    z-index: 1;
+    font-size: 2.8rem;
+    font-weight: bold;
+  }
+
+  /* Center Button */
+  .center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+    flex-direction: column;
+  }
+  .start-btn {
+    padding: 1rem 1rem; /* Bigger button */
+    background: linear-gradient(135deg, #a21a82); /* Changed color to green gradient */
+    color: white;
+    font-size: 1.5rem; /* Bigger text */
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow:0 5px 5px rgba(0,0,0,0.3);
+    animation: pulse 1.5s infinite;
+  }
+  .start-btn:hover {
+    transform: scale(1.08);
+    background: linear-gradient(135deg, #2E7D32, #1B5E20);
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(76,175,80, 0.7); }
+    70% { box-shadow: 0 0 0 30px rgba(76,175,80, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(76,175,80, 0); }
+  }
+
+  .hidden { display: none; }
+
+  /* Form */
+  form {
+    background: white;
+    padding: 1.8rem;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    max-width: 600px;
+    margin: 2rem auto;
+    text-align: left;
+    animation: slideDown 0.6s ease;
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  form h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #004d40;
+  }
+  form select, form input, form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  form button {
+    background-color: #ff7043;
+    color: white;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+  }
+  form button:hover { background-color: #e64a19; }
+
+  /* News Ads Section */
+  .news-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  .news-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    position: relative;
+    animation: pop 0.5s ease;
+    border: 5px solid #ff7043;
+    background: linear-gradient(135deg, #fff 60%, #fbe9e7);
+    overflow: hidden;
+  }
+  .news-card::before {
+    content: "🚨 Alert";
+    position: absolute;
+    top: -18px;
+    left: -35px;
+    transform: rotate(-20deg);
+    background: #ff7043;
+    color: white;
+    font-weight: bold;
+    padding: 6px 40px;
+    font-size: 1rem;
+  }
+  .news-card h3 {
+    color: #d84315;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .news-card p { margin: 0.4rem 0; font-size: 1rem; }
+  .badge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #004d40;
+    color: white;
+    font-size: 0.9rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .High { background: #d32f2f; }
+  .Medium { background: #ffa000; }
+  .Low { background: #388e3c; }
+  @keyframes pop {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  footer {
+    background: #004d40;
+    color: #b2dfdb;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+  }
+  .social-links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+    .social-links a {
+      color: #ff7043;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: #ffffff;
+    }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="login.html">Login</a>
+  <a href="register.html">Register</a>
+  <a href="events.html">Events</a>
+  <a href="profile.html">Profile</a>
+</nav>
+
+<header>
+  <h1>Emergency Alerts & Updates</h1>
+</header>
+
+<!-- Center Button -->
+<div class="center-container">
+  <button class="start-btn" id="startBtn">+ Add Emergency News</button>
+</div>
+
+<!-- Hidden Form -->
+<form id="newsForm" class="hidden">
+  <h2>Post Emergency Update</h2>
+  <input type="text" id="title" placeholder="News Title" required>
+  <textarea id="description" placeholder="Detailed Description" rows="3" required></textarea>
+  <input type="text" id="contact" placeholder="Contact Info" required>
+  <input type="text" id="location" placeholder="Location" required>
+  <select id="urgency" required>
+    <option value="">Select Priority</option>
+    <option value="High">High</option>
+    <option value="Medium">Medium</option>
+    <option value="Low">Low</option>
+  </select>
+  <button type="submit">Publish News</button>
+</form>
+
+<!-- News Feed -->
+<div class="news-feed" id="newsContainer"></div>
+
+<footer>
+  &copy; 2025 Alumni Management System
+  <div class="social-links">
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+</footer>
+
+<script>
+  const startBtn = document.getElementById("startBtn");
+  const form = document.getElementById("newsForm");
+  const newsContainer = document.getElementById("newsContainer");
+
+  startBtn.addEventListener("click", () => {
+    form.classList.remove("hidden");
+    startBtn.style.display = "none";
+  });
+
+  const getNews = () => JSON.parse(localStorage.getItem("emergencyNews") || "[]");
+
+  const saveNews = (news) => {
+    const allNews = getNews();
+    allNews.push(news);
+    localStorage.setItem("emergencyNews", JSON.stringify(allNews));
+    renderNews();
+  };
+
+  const deleteOldNews = () => {
+    let allNews = getNews();
+    const now = new Date().getTime();
+    // Remove news older than 14 days (2 weeks)
+    allNews = allNews.filter(n => now - n.timestamp < 14 * 24 * 60 * 60 * 1000);
+    localStorage.setItem("emergencyNews", JSON.stringify(allNews));
+  };
+
+  const renderNews = () => {
+    deleteOldNews();
+    let allNews = getNews();
+    const priorityOrder = { "High": 1, "Medium": 2, "Low": 3 };
+    allNews.sort((a, b) => priorityOrder[a.urgency] - priorityOrder[b.urgency]);
+    
+    newsContainer.innerHTML = "";
+    allNews.forEach(n => {
+      const card = document.createElement("div");
+      card.className = "news-card";
+      card.innerHTML = `
+        <h3>${n.title}</h3>
+        <p><strong>Description:</strong> ${n.description}</p>
+        <p><strong>Contact:</strong> ${n.contact}</p>
+        <p><strong>Location:</strong> ${n.location}</p>
+        <p style="font-size:0.8rem;color:#555;"><em>${n.time}</em></p>
+        <div class="badge ${n.urgency}">${n.urgency} Priority</div>
+      `;
+      newsContainer.appendChild(card);
+    });
+  };
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const news = {
+      title: document.getElementById("title").value,
+      description: document.getElementById("description").value,
+      contact: document.getElementById("contact").value,
+      location: document.getElementById("location").value,
+      urgency: document.getElementById("urgency").value,
+      time: new Date().toLocaleString(),
+      timestamp: new Date().getTime()
+    };
+    saveNews(news);
+    form.reset();
+  });
+
+  renderNews();
+</script>
+
+</body>
+</html>

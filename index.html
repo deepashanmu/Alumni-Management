@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Alumni Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Font Awesome for social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0; 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #e0f2f1; /* light teal */
+      color: #004d40; /* dark teal */
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: #00796b;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #ff7043;
+      text-decoration: underline;
+    }
+
+    /* Header with alumni background image */
+    header {
+      position: relative;
+      background: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80")
+                  center/cover no-repeat;
+      color: white;
+      padding: 4rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 77, 64, 0.55); /* dark overlay */
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+    }
+    header h1 {
+      font-size: 3.2rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: 3px;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+    header p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      font-weight: 600;
+      font-style: italic;
+      letter-spacing: 0.04em;
+    }
+
+    nav {
+      background: #004d40;
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+      gap: 2.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      font-weight: 700;
+    }
+    nav a {
+      color: #b2dfdb;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+    }
+    nav a:hover {
+      background-color: #ff7043;
+      color: white;
+      text-decoration: none;
+      box-shadow: 0 0 6px #ff7043;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 3rem auto 4rem;
+      padding: 0 1rem;
+      flex-grow: 1;
+    }
+    main h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      color: #004d40;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    main p {
+      font-size: 1.2rem;
+      color: #00695c;
+      font-weight: 500;
+      max-width: 650px;
+      margin: 0 auto 2.5rem auto;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: #ff7043;
+      color: white;
+      padding: 0.95rem 2.5rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.15rem;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(255, 112, 67, 0.45);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      margin: 0 0.75rem;
+      display: inline-block;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      background-color: #e64a19;
+      box-shadow: 0 8px 25px rgba(230, 74, 25, 0.65);
+    }
+
+    .image-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+    .image-grid img {
+      width: 280px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .image-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.25);
+    }
+
+    footer {
+      background: #004d40;
+      color: #b2dfdb;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+    }
+
+    /* Social Media Links */
+    .social-links {
+      margin-top: 10px;
+      text-align: center;
+    }
+    .social-links a {
+      margin: 0 15px;
+      color: #ff7043;
+      font-size: 1.8rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .social-links a:hover {
+      color: #ffffff;
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Alumni Management System</h1>
+  <p>"Together We Grow, Together We Achieve"</p>
+</header>
+
+<nav>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="login.html">Login</a>
+  <a href="register.html">Register</a>
+  <a href="events.html">Events</a>
+  <a href="profile.html">Profile</a>
+  <a href="emergency.html">Emergency</a>
+</nav>
+
+<main>
+  <h2>When alumni rise,the institution shines</h2>
+  <p>
+    Reconnect with your peers, explore exciting career opportunities, attend exclusive events, and support your alma mater.
+  </p>
+ <div style="display:flex; justify-content:center; align-items:center;">
+  <a href="register.html" class="btn-primary">Register Now</a>
+  <a href="login.html" class="btn-primary">Login</a>
+</div>
+
+  <div class="image-grid">
+    <img src="frnds.jpg.jpg" alt="Group of alumni networking" />
+    <img src="pexels-karolina-grabowska-8106629.jpg" alt="University building" />
+    <img src="class.jpg.jpg" alt="Classroom with students" />
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 Alumni Management System — All rights reserved.
+  <div class="social-links">
+    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+</footer>
+</body>
+</html>

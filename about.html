@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About | Alumni Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Font Awesome CDN for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* RESET */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html {
+      height: 100%;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+    }
+
+    /* BACKGROUND IMAGE */
+    body {
+      background: url("https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-a04c-622f-8ae9-c07536ea1595/raw?se=2025-08-23T13%3A58%3A30Z&sp=r&sv=2024-08-04&sr=b&scid=24f54276-04b5-5f17-89f4-442d4ab19e65&skoid=add8ee7d-5fc7-451e-b06e-a82b2276cf62&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-23T11%3A38%3A35Z&ske=2025-08-24T11%3A38%3A35Z&sks=b&skv=2024-08-04&sig=XEs3WPzyEeRd1ePAiT4Bph8VtHHPAL3oVQ8I3aTCits%3D")
+                  center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    /* OVERLAY */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 77, 64, 0.75);
+      z-index: -1;
+    }
+
+    /* NAVIGATION */
+    nav {
+      background: rgba(0, 77, 64, 0.85);
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      color: #e0f7fa;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #e64a19; }
+
+    /* MAIN ABOUT CONTENT */
+    .about-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem;
+    }
+
+    .about-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 3rem;
+      max-width: 800px;
+      text-align: center;
+      box-shadow: 8px 8px 20px white;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+    .about-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+    }
+
+    .about-card h1 {
+      font-size: 2.8rem;
+      color: white;
+      margin-bottom: 1rem;
+      text-shadow: 1px 2px 6px rgba(0,0,0,0.6);
+    }
+    .about-card p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: white;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+    .highlight { color: #e64a19; font-weight: bold; }
+
+    .bg-marquee {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.2;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(0, 77, 64, 0.85);
+      color: #e0f7fa;
+    }
+
+    .social-links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+    .social-links a {
+      color: #ff7043;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+    <a href="register.html">Register</a>
+    <a href="events.html">Events</a>
+    <a href="profile.html">Profile</a>
+    <a href="emergency.html">Emergency</a>
+  </nav>
+
+  <!-- ABOUT CONTENT -->
+  <section class="about-container">
+    <div class="about-card">
+      <!-- Background Marquee -->
+      <marquee class="bg-marquee" direction="right" scrollamount="8">
+        <img src="degree.jpg" width="800" height="800" alt="Alumni Ad" />
+      </marquee>
+
+      <h1>About Our Alumni Network</h1>
+      <p>
+        Our <span class="highlight">Alumni Management System</span> An opportunity for the past to coalesce for a while with the present and provide greater opportunities for the college to attain greater heights as the experience of the past helps guide the untapped potential of today. A full day event where Alumni present their experiences and interact with the present batches apart from reminiscence of the golden years of their life here. It also provides alumni to connect with each other, to catch up on the good old times and another chance at business networking.
+        The association endeavors to strengthen the ties among its alumni by addressing the concerns of members with a view to learn and adapt to changes that are necessary. This Alumni Association works as an interface for maintaining the relationship with the alumni and to involve them in the development and growth of the institution. It promotes and encourages the alumni to exchange professional knowledge by organizing conferences, seminars, lectures and meetings amongst alumni, students, faculty and others. Since continuous interaction with Alumni is expected to increase the placement opportunities of the students, this association makes earnest attempts to strengthen the bonds between the alumni and the institution.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Alumni Management System. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+  </footer>
+
+</body>
+</html>

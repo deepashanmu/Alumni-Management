@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Events | Alumni Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font Awesome CDN for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      font-family: "Segoe UI", sans-serif;
+      color: #fff;
+      background: #00695c;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    nav {
+      background:#00695c;
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+    nav a {
+      color: #fff;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover { color: #e64a19; }
+
+    .events {
+      position: relative;
+      padding: 4rem 5%;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .events::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=2000&q=80") repeat-x;
+      background-size: cover;
+      z-index: -1;
+      animation: moveBackground 60s linear infinite;
+    }
+    @keyframes moveBackground {
+      from { background-position: 100% 0; }
+      to { background-position: 0 0; }
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 { font-size: 3rem; }
+    .hero p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #aee;
+    }
+
+    .event {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      background:#00695c;
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    .event:hover { transform: scale(1.02); }
+    .event:nth-child(even) { flex-direction: row-reverse; }
+    .event.show { opacity: 1; transform: translateY(0); }
+
+    .event img {
+      width: 45%;
+      border-radius: 15px;
+      object-fit: cover;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    }
+    .event-content { width: 50%; }
+    .event-content h2 {
+      font-size: 1.8rem;
+      color:white;
+      margin-bottom: 0.6rem;
+    }
+    .event-content span {
+      margin-bottom: 1rem;
+      padding: 0.4rem 0.8rem;
+      background: #e64a19;
+      color: #000;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+    .event-content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color:white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 0rem;
+      background: #00695c;
+      color: #aee;
+      position: relative;
+      z-index: 2;
+    }
+    .social-links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+    .social-links a {
+      color: #ff7043;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    .social-links a:hover { color: #ffffff; }
+
+    /* Marquee */
+    .marquee {
+      background: #e64a19;
+      color: #fff;
+      font-weight: bold;
+      padding: 10px 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee p {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marquee 12s linear infinite;
+      font-size: 1.1rem;
+    }
+    .marquee a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+    }
+    .marquee a:hover { text-decoration: underline; }
+    @keyframes marquee {
+      0%   { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+    <a href="register.html">Register</a>
+    <a href="profile.html">Profile</a>
+    <a href="emergency.html">Emergency</a>
+  </nav>
+
+  <section class="hero">
+    <h1>Alumni Events</h1>
+    <p>Explore our upcoming gatherings and celebrations.</p>
+  </section>
+
+  <!-- ✅ Clickable marquee -->
+  <div class="marquee">
+    <p>
+      <a href="#alumni-meet">Annual Alumni Meet – Dec 15, 2025</a> | 
+      <a href="#career-program">Career Mentorship Program – Apr 12, 2026</a> 
+    </p>
+  </div>
+
+  <section class="events">
+    <div class="event" id="alumni-meet">
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1000&q=80" alt="Alumni Meet">
+      <div class="event-content">
+        <h2>Annual Alumni Meet</h2><span>Dec 15, 2025</span><br>
+        <p>Reconnect, reminisce, and celebrate with your alumni community.</p>
+      </div>
+    </div>
+
+    <div class="event" id="career-program">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80" alt="Workshop">
+      <div class="event-content">
+        <h2>Career Mentorship Program</h2><span>Apr 12, 2026</span><br>
+        <p>Guidance, inspiration, and connections from industry-leading alumni.</p>
+      </div>
+    </div>
+
+    <div class="event" id="awards">
+      <img src="https://alumni.ucsc.edu/files/2023/11/2023-Alumni-Awards-Celebration.jpg" alt="Alumni Awards">
+      <div class="event-content">
+        <h2>Alumni Achievement Awards</h2><span>Mar 10, 2025</span><br>
+        <p>Honouring excellence among our alumni for outstanding contributions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Alumni Management System. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    const events = document.querySelectorAll(".event");
+    const reveal = () => {
+      events.forEach(e => {
+        if (e.getBoundingClientRect().top < window.innerHeight - 100) {
+          e.classList.add("show");
+        }
+      });
+    };
+    window.addEventListener("scroll", reveal);
+    window.addEventListener("load", reveal);
+  </script>
+</body>
+</html>
